@@ -1,14 +1,28 @@
-import { Metadata } from 'next';
-import { getUserName } from './lib/user-info';
+'use client';
+
 import Image from 'next/image';
+import { useTheme } from './components/theme-provider';
 
 const Home = () => {
-  const user = getUserName();
+  const { theme } = useTheme();
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-md shadow-md">
-        <h1 className="text-3xl font-bold mb-4 text-gray-800">
-          Welcome, {user}!
+    <div
+      className={`min-h-screen flex items-center justify-center bg-${
+        theme === 'dark' ? 'gray-800' : 'gray-100'
+      }`}
+    >
+      <div
+        className={`bg-white p-8 rounded-md shadow-md ${
+          theme === 'dark' ? 'text-white' : 'text-gray-800'
+        }`}
+      >
+        <h1
+          className={`text-3xl font-bold mb-4 ${
+            theme === 'dark' ? 'text-white' : 'text-black'
+          }`}
+        >
+          Welcome
         </h1>
         <Image
           src="https://images.unsplash.com/photo-1605460375648-278bcbd579a6"

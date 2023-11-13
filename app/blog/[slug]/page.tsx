@@ -1,7 +1,6 @@
 import { posts } from '@/app/data/posts';
 import { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
-import React from 'react';
 
 interface Props {
   params: { slug: string };
