@@ -1,10 +1,8 @@
-const Home = async () => {
-  const userRequest = await fetch(
-    'https://jsonplaceholder.typicode.com/users/1'
-  );
-  const user = await userRequest.json();
+import { getUserName } from "./lib/user-info";
 
-  return <div>Welcome, {user.name}!</div>;
+const Home = async () => {
+  const user = getUserName();
+  return <div>Welcome, {user}!</div>;
 };
 
 export default Home;
