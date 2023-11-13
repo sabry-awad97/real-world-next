@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { User } from './Users';
+import { TUser } from './Users';
 
 interface Props {
-  users: User[];
+  users: TUser[];
 }
 
 export function List({ users }: Props) {
