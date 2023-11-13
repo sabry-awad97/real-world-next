@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { TUser } from '../types';
+import { TUser } from '../data/fakeUsers';
 import { List } from './List';
 
 const Users = () => {

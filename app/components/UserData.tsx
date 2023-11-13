@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { TUser } from '../types';
+import { TUser } from '../data/fakeUsers';
 
 interface Props {
   user: TUser;

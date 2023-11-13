@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { TUser } from './Users';
+import { TUser } from '../data/fakeUsers';
 
 interface Props {
   users: TUser[];

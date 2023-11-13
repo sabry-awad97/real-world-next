@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { notFound } from 'next/navigation';
 import { FC, useEffect, useState } from 'react';
-import { TUser } from '../types';
+import { TUser } from '../data/fakeUsers';
 import UserData from './UserData';
 
 interface Props {
