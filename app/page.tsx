@@ -1,10 +1,12 @@
-import Counter from './components/Counter';
+import ProductCard from './components/ProductCard';
+import { products } from './components/data/products';
 
-const Home = async () => {
+const Home = () => {
   return (
-    <div>
-      <h1>Welcome</h1>
-      <Counter />
+    <div className="grid grid-cols-4 gap-4">
+      {products.map(product => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   );
 };
