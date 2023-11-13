@@ -3,6 +3,7 @@ const Home = async () => {
     'https://jsonplaceholder.typicode.com/users/1'
   );
   const user = await userRequest.json();
+
   return <div>Welcome, {user.name}!</div>;
 };
 
