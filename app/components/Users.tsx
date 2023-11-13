@@ -2,18 +2,8 @@
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { TUser } from '../types';
 import { List } from './List';
-
-export interface TUser {
-  id: string;
-  profile_picture: string;
-  first_name: string;
-  last_name: string;
-  username: string;
-  email: string;
-  company: string;
-  job_title: string;
-}
 
 const Users = () => {
   const [loading, setLoading] = useState(true);
@@ -22,9 +12,7 @@ const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await axios.get<TUser[]>(
-          'http://localhost:3030/users'
-        );
+        const { data } = await axios.get<TUser[]>('/api/users');
         setUsers(data);
       } catch (error) {
         console.error('Error fetching users:', error);

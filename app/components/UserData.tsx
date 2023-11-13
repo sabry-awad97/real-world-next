@@ -1,5 +1,5 @@
-import { TUser } from '@/app/components/Users';
 import Image from 'next/image';
+import { TUser } from '../types';
 
 interface Props {
   user: TUser;

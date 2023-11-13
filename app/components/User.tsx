@@ -3,8 +3,8 @@
 import axios from 'axios';
 import { notFound } from 'next/navigation';
 import { FC, useEffect, useState } from 'react';
+import { TUser } from '../types';
 import UserData from './UserData';
-import { TUser } from './Users';
 
 interface Props {
   username: string;
@@ -18,10 +18,9 @@ const User: FC<Props> = ({ username }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const {
-          data: [user],
-          status,
-        } = await axios.get<TUser[]>(`http://localhost:3030/users/${username}`);
+        const { data: user, status } = await axios.get<TUser>(
+          `/api/users/${username}`
+        );
         setUser(user);
         setStatus(status);
       } catch (error) {
