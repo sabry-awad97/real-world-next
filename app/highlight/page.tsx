@@ -1,5 +1,6 @@
-import React from 'react';
-import Highlight from './Highlight';
+import dynamic from 'next/dynamic';
+
+const Highlight = dynamic(() => import('./Highlight'), { ssr: false });
 
 const HighlightPage = () => {
   return <Highlight code="const x = 1;" />;
