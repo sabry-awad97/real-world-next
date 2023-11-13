@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { User } from '@/app/page';
 import axios from 'axios';
+import { notFound } from 'next/navigation';
 
 interface Props {
   params: { name: string };
@@ -11,7 +12,12 @@ interface Props {
 const UserPage = async ({ params: { name: username } }: Props) => {
   const {
     data: [user],
+    status,
   } = await axios.get<User[]>(`http://localhost:3030/users/${username}`);
+
+  if (status === 404) {
+    notFound();
+  }
 
   return (
     <div className="max-w-4xl mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
