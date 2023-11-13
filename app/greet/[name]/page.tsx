@@ -1,3 +1,5 @@
+import { Metadata, ResolvingMetadata } from 'next';
+
 interface Props {
   params: { name: string };
   searchParams: { name: string };
@@ -15,3 +17,12 @@ const GreetPage: React.FC<Props> = ({ params, searchParams }) => {
 };
 
 export default GreetPage;
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return {
+    title: `${params.name}: ${searchParams.name}`,
+  };
+}

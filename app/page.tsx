@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { getUserName } from './lib/user-info';
 import Image from 'next/image';
 
@@ -14,7 +15,8 @@ const Home = () => {
           width={500}
           height={200}
           alt="A beautiful English Setter"
-          objectFit="cover"
+          priority={true}
+          style={{ width: 'auto' }}
         />
       </div>
     </div>
