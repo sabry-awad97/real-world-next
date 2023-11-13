@@ -1,5 +1,12 @@
+import Counter from './components/Counter';
+
 const Home = async () => {
-  return <div>This is the home page.</div>;
+  return (
+    <div>
+      <h1>Welcome</h1>
+      <Counter />
+    </div>
+  );
 };
 
 export default Home;
