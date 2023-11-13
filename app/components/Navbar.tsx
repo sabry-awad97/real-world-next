@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useShoppingCart } from './context/cartContext';
+import { useShoppingCart } from '../state/context/cartContext';
 
 const Navbar = () => {
   const { items } = useShoppingCart();

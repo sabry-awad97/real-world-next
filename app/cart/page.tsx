@@ -1,7 +1,7 @@
 'use client';
 
-import { useShoppingCart } from '../components/context/cartContext';
-import { products } from '../components/data/products';
+import { useShoppingCart } from '../state/context/cartContext';
+import { products } from '../data/products';
 
 function getFullItem(id: string) {
   const idx = products.findIndex(item => item.id === id);

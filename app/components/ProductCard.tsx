@@ -1,9 +1,9 @@
 'use client';
 
 import { FC } from 'react';
-import { TProduct } from './data/products';
+import { TProduct } from '../data/products';
 import Image from 'next/image';
-import { useShoppingCart } from './context/cartContext';
+import { useShoppingCart } from '../state/context/cartContext';
 
 interface Props {
   product: TProduct;
@@ -13,7 +13,7 @@ const ProductCard: FC<Props> = ({ product: { id, name, price, picture } }) => {
   const { items, setItems } = useShoppingCart();
 
   const productAmount = id in items ? items[id] : 0;
-  
+
   const handleAmount = (action: 'decrement' | 'increment') => {
     if (action === 'increment') {
       const newItemAmount = id in items ? items[id] + 1 : 1;
