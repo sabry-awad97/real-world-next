@@ -1,9 +1,15 @@
 import axios from 'axios';
 import Link from 'next/link';
 
-interface User {
+export interface User {
   id: string;
-  name: string;
+  profile_picture: string;
+  first_name: string;
+  last_name: string;
+  username: string;
+  email: string;
+  company: string;
+  job_title: string;
 }
 
 const Home = async () => {
@@ -15,7 +21,7 @@ const Home = async () => {
     <ul>
       {users.map(user => (
         <li key={user.id}>
-          <Link href={`/users/${user.id}`}>{user.name}</Link>
+          <Link href={`/users/${user.username}`}>{user.username}</Link>
         </li>
       ))}
     </ul>
