@@ -18,7 +18,7 @@ function TopBar() {
     <Box
       width="100%"
       padding="1"
-      backgroundColor={useColorModeValue('gray.50', 'gray.700')}
+      backgroundColor={useColorModeValue('whatsapp.500', 'gray.700')}
     >
       <Box maxWidth="container.xl" margin="auto">
         <Flex justifyContent="space-between" alignItems="center">
