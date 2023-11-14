@@ -1,31 +1,20 @@
 'use client';
 
+import Image from 'next/image';
 import { FC } from 'react';
 import { TProduct } from '../data/products';
-import Image from 'next/image';
-import { useShoppingCart } from '../state/context/cartContext';
+import { selectCart, useActions, useAppSelector } from '../state/redux';
 
 interface Props {
   product: TProduct;
 }
 
 const ProductCard: FC<Props> = ({ product: { id, name, price, picture } }) => {
-  const { items, setItems } = useShoppingCart();
+  const { decrement, increment } = useActions();
 
-  const productAmount = id in items ? items[id] : 0;
+  const items = useAppSelector(selectCart);
 
-  const handleAmount = (action: 'decrement' | 'increment') => {
-    if (action === 'increment') {
-      const newItemAmount = id in items ? items[id] + 1 : 1;
-      setItems({ ...items, [id]: newItemAmount });
-    }
-
-    if (action === 'decrement') {
-      if (items?.[id] > 0) {
-        setItems({ ...items, [id]: items[id] - 1 });
-      }
-    }
-  };
+  const productAmount = items?.[id] ?? 0;
 
   return (
     <div className="bg-gray-200 p-6 rounded-md">
@@ -48,7 +37,7 @@ const ProductCard: FC<Props> = ({ product: { id, name, price, picture } }) => {
         <button
           className="pl-2 pr-2 bg-red-400 text-white rounded-md"
           disabled={productAmount === 0}
-          onClick={() => handleAmount('decrement')}
+          onClick={() => decrement(id)}
         >
           -
         </button>
@@ -57,7 +46,7 @@ const ProductCard: FC<Props> = ({ product: { id, name, price, picture } }) => {
 
         <button
           className="pl-2 pr-2 bg-green-400 text-white rounded-md"
-          onClick={() => handleAmount('increment')}
+          onClick={() => increment(id)}
         >
           +
         </button>

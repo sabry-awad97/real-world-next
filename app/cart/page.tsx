@@ -2,6 +2,7 @@
 
 import { useShoppingCart } from '../state/context/cartContext';
 import { products } from '../data/products';
+import { selectCart, useAppSelector } from '../state/redux';
 
 function getFullItem(id: string) {
   const idx = products.findIndex(item => item.id === id);
@@ -9,7 +10,7 @@ function getFullItem(id: string) {
 }
 
 const Cart = () => {
-  const { items } = useShoppingCart();
+  const items = useAppSelector(selectCart);
   const total = Object.keys(items)
     .map(id => getFullItem(id).price * items[id])
     .reduce((x, y) => x + y, 0);

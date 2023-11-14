@@ -2,8 +2,8 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { ShoppingCartProvider } from './state/context/cartContext';
 import Navbar from './components/Navbar';
+import ReduxProvider from './state/redux/ReduxProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,10 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ShoppingCartProvider>
+        <ReduxProvider>
           <Navbar />
           <main className="w-9/12 m-auto pt-10">{children}</main>
-        </ShoppingCartProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

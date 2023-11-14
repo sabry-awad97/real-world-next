@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { useShoppingCart } from '../state/context/cartContext';
+import { selectCart, useAppSelector } from '../state/redux';
 
 const Navbar = () => {
-  const { items } = useShoppingCart();
+  const items = useAppSelector(selectCart);
   const totalItemsAmount = Object.values(items).reduce((x, y) => x + y, 0);
 
   return (
