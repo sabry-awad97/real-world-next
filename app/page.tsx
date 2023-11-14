@@ -2,10 +2,21 @@
 
 import { useRouter } from 'next/navigation';
 import { FormEventHandler, useState } from 'react';
+import { useAuth } from './hooks/useAuth';
 
 export default function Home() {
   const [loginError, setLoginError] = useState<string | null>(null);
   const router = useRouter();
+  const { loading, loggedIn } = useAuth();
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!loading && loggedIn) {
+    router.push('/protected');
+    return null;
+  }
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = event => {
     event.preventDefault();

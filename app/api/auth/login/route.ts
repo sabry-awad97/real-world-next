@@ -1,26 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError, object, string } from 'zod';
 import { encode } from '../../jwt';
+import { TUserWithoutPassword, mockUsers } from '@/app/data/users';
 
 const payloadSchema = object({
   email: string(),
   password: string(),
 });
 
-const mockUsers = [
-  {
-    id: '1',
-    name: 'John Doe',
-    email: 'test@example.com',
-    password: 'password123',
-  },
-];
-
-function authenticate(email: string, password: string): boolean {
+function authenticate(email: string, password: string): string | null {
   const user = mockUsers.find(
     user => user.email === email && user.password === password
   );
-  return !!user;
+
+  if (!user) return null;
+
+  const userWithoutPassword: TUserWithoutPassword = {
+    id: user.id,
+    name: user.name,
+    email,
+  };
+
+  return encode(userWithoutPassword);
 }
 
 async function LoginHandler(request: NextRequest) {
@@ -32,11 +33,9 @@ async function LoginHandler(request: NextRequest) {
 
   try {
     const { email, password } = payloadSchema.parse(await request.json());
-    const isAuthenticated = authenticate(email, password);
+    const token = authenticate(email, password);
 
-    if (isAuthenticated) {
-      const token = encode({ email });
-
+    if (token) {
       const response = NextResponse.json({
         success: true,
         message: 'Authentication successful',

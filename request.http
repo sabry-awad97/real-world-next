@@ -11,4 +11,4 @@ Content-Type: application/json
 
 # GET request to a protected route using cookies obtained from the login response
 GET http://localhost:3000/api/auth/protected
-Cookie: authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJpYXQiOjE2OTk5OTE3NTF9.z9T_at4LYOSyz5x17mCnZflVsFOYHGqolN-sms8Pdsg
+Cookie: authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJpYXQiOjE2OTk5OTYxNjl9.WK39ykfn-0Y6n6iyGZwBmkubbKVpQ5HjCnc8LQiL23M
