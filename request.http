@@ -1,0 +1,14 @@
+# POST request to the login endpoint
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+###
+
+# GET request to a protected route using cookies obtained from the login response
+GET http://localhost:3000/api/auth/protected
+Cookie: authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJpYXQiOjE2OTk5OTE3NTF9.z9T_at4LYOSyz5x17mCnZflVsFOYHGqolN-sms8Pdsg
