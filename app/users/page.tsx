@@ -1,5 +1,3 @@
-'use client';
-
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import UserCard from '../components/UserCard';
 import { users } from '../data/users';
