@@ -3,16 +3,16 @@
 import Image from 'next/image';
 import { FC } from 'react';
 import { TProduct } from '../data/products';
-import useGlobalItems from '../state/redux/useGlobalItems';
-import { useActions } from '../state/redux';
+import { useCart, useDecrement, useIncrement } from '../state/zustand/store';
 
 interface Props {
   product: TProduct;
 }
 
 const ProductCard: FC<Props> = ({ product: { id, name, price, picture } }) => {
-  const { decrement, increment } = useActions();
-  const items = useGlobalItems();
+  const decrement = useDecrement();
+  const increment = useIncrement();
+  const items = useCart();
 
   const productAmount = items?.[id] ?? 0;
 
